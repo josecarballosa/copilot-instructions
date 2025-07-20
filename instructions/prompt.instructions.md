@@ -11,53 +11,45 @@ applyTo: '**/*.prompt.md, **/*.instructions.md, **/*.chatmode.md'
 ### 1.1. Write Clear, Specific, and Direct Instructions
 Eliminate ambiguity. Do not assume the AI has implicit knowledge of your goals.
 
-- Use explicit and concise language. Instead of "fix this code,"
-  write "Refactor this Python function to improve its readability and add
-  comments explaining the logic."
-- Specify the desired output format, style, and length. For example,
-  "Generate a summary of the following text as a JSON object with keys 'summary'
-  and 'keywords'."
-- Avoid vague or overly complex language. Break down complex requests into
-  simpler statements.
+- Use explicit and concise language. 
+- Specify the desired output format, style, and length. 
+- Avoid vague or overly complex language.
+- Break down complex requests into simpler statements.
 
 ### 1.2 Provide a Relevant Goal
-The AI works better when it understands the "why" behind the task given. Provide
-background information, constraints, user personas, and the overall goal.
+The AI works better when it understands the "why" behind the given task. Provide
+background information, constraints, user personas, and an overall goal.
 
 ### 1.3. Include Sufficient Context
-The AI may need information to perform a better task. Provide details to ground 
+The AI needs more information to perform tasks better. Provide details to ground 
 the responses and eliminate hallucinations. 
 
-- Include relevant information. For example, fresh documentation, snippets, or
-  domain-specific terms.
+- Include relevant details. For example, fresh documentation snippets.
 - Reference relevant standards, frameworks, or methodologies.
 - Specify the target audience and their technical level.
 - Mention any specific requirements or constraints.
-- Place context before the primary instruction.
 
-- **Example:**
-```
-# CONTEXT
-
-I am building a web application using Flask and SQLAlchemy.
-Here is my User model:
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary\_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-
-# TASK
-
-Write a SQLAlchemy query to find a user by their username.
-````
-
-### 1.3. Use an Iterative Approach
+### 1.4. Use an Iterative Approach
 Start with a simple prompt and refine it based on the output.
 
-- **Step 1:** Formulate a basic prompt to get an initial response.
-- **Step 2:** Analyze the output. If it's not ideal, identify the shortcomings.
-- **Step 3:** Add more detail, context, or examples to your prompt to address
-the shortcomings and try again.
+1. Start with a basic prompt to get an initial response.
+2. Analyze the output. Evaluate metrics.
+3. If it's not ideal, identify the shortcomings.
+4. Add or modify detail, context, or examples to address the shortcomings, and try again.
+5. Document results and reasoning.
+
+**Evaluation Metrics:**
+- **User Satisfaction:** How well does the output matches user's expectations?
+- **Relevance:** How closely the output addresses the task?
+- **Safety:** Does it produce any harmful or biased results?
+- **Consistency:** Do similar inputs produce similar outputs?
+- **Efficiency:** How is the speed and resource usage?
+
+**Versioning and Lifecycle Management:**
+- Track prompt versions and changes.
+- Document the reasoning behind changes.
+- Maintain backward compatibility when possible.
+- Plan for prompt updates and migrations.
 
 ---
 
@@ -85,7 +77,7 @@ or XML tags (`<context>`, `<example>`) to encapsulate different sections.
 <output_format>
   Provide your analysis as a list of identified vulnerabilities and suggest a corrected version of the code using parameterized queries.
 </output_format>
-````
+```
 
 ### 2.2. Place Instructions First, Context Last
 
@@ -109,9 +101,9 @@ instruction or role at the beginning.
 Guide the AI by showing it exactly what you want. Providing examples of
 input-output pairs is one of the most effective ways to improve response quality.
 
-  - **DO:** Include 2-5 examples that are relevant to the task.
-  - **DO:** Ensure the examples cover a range of scenarios, including potential edge cases.
-  - **DO:** Maintain a consistent format between your examples and your final query.
+  - Include 2-5 examples that are relevant to the task.
+  - Ensure the examples cover a range of scenarios, including potential edge cases.
+  - Maintain a consistent format between your examples and your final query.
 
 ### 3.2. Assign a Clear Role or Persona
 
@@ -154,8 +146,8 @@ the next. This is highly effective for multi-step workflows.
 - **Prompt 1:** "Given this user story, generate a list of technical
   requirements."
 - **Prompt 2:** "Using the technical requirements from the previous step,
-  write the corresponding function signatures in Python."
-- **Prompt 3:** "Implement the following Python function:
+  write the corresponding function signatures."
+- **Prompt 3:** "Implement the following function:
   `[insert signature from step 2]`."
 
 -----
@@ -167,15 +159,16 @@ the next. This is highly effective for multi-step workflows.
 Be vigilant about the potential for generating harmful, biased, or insecure
 content.
 
-  - **DO:** Include a "safety instruction" in your prompts. For example, "Ensure
+  - Include a "safety instruction" in your prompts. For example, "Ensure
     the code does not contain any security vulnerabilities and handles user input
     safely."
-  - **DO:** Review the generated content for biases (e.g., gender, race) and
+  - Review the generated content for biases (e.g., gender, race, age) and
     instruct the model to be neutral and inclusive.
-  - **DO:** Provide an "out" for the model. Instruct it on how to respond if it
+  - Provide an "out" for the model. Instruct it on how to respond if it
     cannot fulfill the request safely or ethically (e.g., "If the request is
     ambiguous or potentially harmful, respond with 'I cannot fulfill this
     request.'").
+  - Include human oversight for sensitive content or tasks.
 
 ### 5.2. Require Fact-Checking and Source Citation
 
