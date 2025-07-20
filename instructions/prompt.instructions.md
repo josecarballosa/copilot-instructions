@@ -17,12 +17,11 @@ Eliminate ambiguity. Do not assume the AI has implicit knowledge of your goals.
 - Break down complex requests into simpler statements.
 
 ### 1.2 Provide a Relevant Goal
-The AI works better when it understands the "why" behind the given task. Provide
-background information, constraints, user personas, and an overall goal.
+Provide background information, constraints, user personas, and an overall goal.
+The AI works better when it understands the "why" behind the given task. 
 
 ### 1.3. Include Sufficient Context
-The AI needs more information to perform tasks better. Provide details to ground 
-the responses and eliminate hallucinations. 
+Provide critical details to ground AI responses and prevent hallucinations. 
 
 - Include relevant details. For example, fresh documentation snippets.
 - Reference relevant standards, frameworks, or methodologies.
@@ -56,11 +55,11 @@ Start with a simple prompt and refine it based on the output.
 ## 2. Prompt Structure and Formatting
 
 ### 2.1. Use Delimiters to Structure the Prompt
-Use structural elements to create a clear separation between different parts of
+Use structural elements when appropriate to create a more clear separation between different parts of
 your prompt, such as context, examples, and the final instruction.
 
-- **Recommended Delimiters:** Use triple hashes (`###`), triple quotes (`"""..."""`),
-or XML tags (`<context>`, `<example>`) to encapsulate different sections.
+- **Recommended Delimiters:** Use triple hashes (`###`), or XML tags (`<context>`, `<example>`)
+  to encapsulate different sections.
 - **Example with XML Tags:**
 ```xml
 <context>
@@ -81,8 +80,8 @@ or XML tags (`<context>`, `<example>`) to encapsulate different sections.
 
 ### 2.2. Place Instructions First, Context Last
 
-The order of elements in your prompt matters. In most cases, place the primary
-instruction or role at the beginning.
+In most cases, place the primary instruction or role at the beginning.
+The order of elements in your prompt matters. 
 
 **General Order**: 
 
